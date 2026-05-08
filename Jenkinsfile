@@ -18,27 +18,27 @@ pipeline {
         stage('Stop Old Containers') {
             steps {
                 echo "Stopping old containers..."
-                sh 'docker-compose down || true'
+                bat 'docker-compose down || true'
             }
         }
 
         stage('Build Docker Images') {
             steps {
                 echo "Building Docker images..."
-                sh 'docker-compose build'
+                bat 'docker-compose build'
             }
         }
 
         stage('Start Containers') {
             steps {
                 echo "Starting containers..."
-                sh 'docker-compose up -d'
+                bat 'docker-compose up -d'
             }
         }
 
         stage('Verify Running Containers') {
             steps {
-                sh 'docker ps'
+                bat 'docker ps'
             }
         }
     }
